@@ -1,0 +1,108 @@
+.game {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    gap: 2vmin;
+    height: 100vh;
+
+    &__score {
+      display: flex;
+      gap: 2vmin;
+    }
+
+    &__grid {
+      display: grid;
+      grid-template-columns: repeat(var(--grid-size), var(--cell-size));
+      grid-template-rows: repeat(var(--grid-size), var(--cell-size));
+      gap: var(--cell-gap);
+      border-radius: 1vmin;
+      padding: var(--cell-gap);
+      position: relative;
+      background-color: $game-board-color;
+
+      .cell {
+        background-color: $game-board-cell;
+        border-radius: 1vmin;
+      }
+
+      .tile {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: var(--cell-size);
+        height: var(--cell-size);
+        border-radius: 1vmin;
+        top: calc(
+          var(--y) * (var(--cell-size) + var(--cell-gap)) + var(--cell-gap)
+        );
+        left: calc(
+          var(--x) * (var(--cell-size) + var(--cell-gap)) + var(--cell-gap)
+        );
+        font-weight: bold;
+        color: hsl(200, 25%, var(--text-lightness));
+        animation: show 200ms ease-in-out;
+        transition: 100ms ease-in-out;
+        &__2 {
+          background-color: $color-2;
+        }
+
+        &__4 {
+          background-color: $color-4;
+        }
+
+        &__8 {
+          background-color: $color-8;
+        }
+
+        &__16 {
+          background-color: $color-16;
+        }
+
+        &__32 {
+          background-color: $color-32;
+        }
+
+        &__64 {
+          background-color: $color-64;
+        }
+
+        &__128 {
+          background-color: $color-128;
+        }
+
+        &__256 {
+          background-color: $color-256;
+        }
+
+        &__512 {
+          background-color: $color-512;
+        }
+
+        &__1024 {
+          background-color: $color-1024;
+        }
+
+        &__2048 {
+          background-color: $color-2048;
+        }
+      }
+    }
+
+    &__buttons {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      width: 100%;
+    }
+  }
+}
+
+@keyframes show {
+  0% {
+    opacity: 0.5;
+    transform: scale(0);
+  }
+}

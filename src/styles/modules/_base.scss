@@ -1,0 +1,18 @@
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  color: $font-color;
+  font-family: $primary-font;
+  background: $background-color;
+  height: 100vh;
+  font-size: 7.5vmin;
+}
+
+button {
+  cursor: pointer;
+}
