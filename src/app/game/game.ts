@@ -45,11 +45,14 @@ export class Game {
         const backButton = document.querySelector('[data-game-back-button]');
         const restartButton = document.querySelector('[data-game-restart-button]');
 
-        backButton.addEventListener('click', () => {
-            AppRouter.routeTo('home');
-        }, { once: true });
+        console.log(backButton)
 
-        restartButton.addEventListener('click', () => {
+        backButton.addEventListener("click", () => {
+            console.log('CLICKED')
+            AppRouter.routeTo('home');
+        }, { once: true, });
+
+        restartButton.addEventListener("click", () => {
             this._score = 0;
             AppRouter.routeTo('game');
         }, { once: true });

@@ -49,12 +49,59 @@ export class GameMovement {
 
         if (!this.canMoveUp() && !this.canMoveDown() && !this.canMoveLeft() && !this.canMoveRight()) {
             newTile.waitForTransition(true).then(() => {
-                alert("You lose")
+                this.gameOver();
             })
             return
         }
     }
 
+    private gameOver() {
+        this.removeAllTiles();
+        this.setGameOverTiles();
+    }
+
+    removeAllTiles() {
+        this._grid.cells.forEach((cell: any) => {
+            cell.tile = null;
+        })
+        const tiles = document.querySelectorAll('[data-tile]');
+        tiles.forEach((tile: any) => {
+            tile.remove();
+        });
+
+        return;
+    }
+
+
+    setGameOverTiles() {
+        const colorArray = [2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048];
+
+        'GAME'.split('').forEach((letter: any, index: number) => {
+            const tileElement = document.createElement("div");
+            tileElement.setAttribute("data-tile", "");
+            tileElement.classList.add("tile");
+            tileElement.textContent = letter;
+            this._gameBoard.append(tileElement);
+            tileElement.style.setProperty("--x", index.toString());
+            tileElement.style.setProperty("--y", '1');
+            const random = Math.floor(Math.random() * colorArray.length);
+            tileElement.classList.add(`tile__${colorArray[random]}`);
+        });
+
+        'OVER'.split('').forEach((letter: any, index: number) => {
+            const tileElement = document.createElement("div");
+            tileElement.setAttribute("data-tile", "");
+            tileElement.classList.add("tile");
+            tileElement.textContent = letter;
+            this._gameBoard.append(tileElement);
+            tileElement.style.setProperty("--x", index.toString());
+            tileElement.style.setProperty("--y", '2');
+            const random = Math.floor(Math.random() * colorArray.length);
+            tileElement.classList.add(`tile__${colorArray[random]}`);
+        });
+
+        return;
+    }
 
     private moveUp() {
         return this.slideTiles(this._grid.cellsByColumn)

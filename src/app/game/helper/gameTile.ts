@@ -6,6 +6,7 @@ export class Tile {
 
     constructor(tileContainer: HTMLElement, value: number = Math.random() > 0.5 ? 2 : 4) {
         this._tileElement = document.createElement("div");
+        this._tileElement.setAttribute("data-tile", "");
         this._tileElement.classList.add("tile");
         tileContainer.append(this._tileElement);
         this.value = value;

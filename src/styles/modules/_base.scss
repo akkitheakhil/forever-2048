@@ -1,7 +1,7 @@
 *,
 *:before,
 *:after {
-  box-sizing: inherit;
+  box-sizing: border-box;
 }
 
 html {
@@ -11,8 +11,12 @@ html {
   background: $background-color;
   height: 100vh;
   font-size: 7.5vmin;
+  overflow: hidden;
 }
 
 button {
   cursor: pointer;
+  font-size: 4.5vmin;
+  font-weight: bold;
+  padding: 0.5rem;
 }
